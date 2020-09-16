@@ -1,0 +1,64 @@
+{
+  "name": "movie",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://bphamict.github.io",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.2",
+    "@testing-library/user-event": "^12.1.4",
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
+    "lodash": "^4.17.20",
+    "moment": "^2.27.0",
+    "node-sass": "^4.14.1",
+    "plyr": "^3.6.2",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.13.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
+    "react-dom": "^16.13.1",
+    "react-facebook": "^8.1.4",
+    "react-helmet": "^6.1.0",
+    "react-recaptcha-v3": "^2.0.1",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.0",
+    "webtorrent": "^0.108.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "gh-pages": "^3.1.0"
+  }
+}

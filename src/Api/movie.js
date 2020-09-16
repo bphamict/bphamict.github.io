@@ -1,0 +1,25 @@
+import axios from './instance';
+
+export const queryMovie = (query = '') => {
+  return axios.get(`/movies?${query}`);
+};
+
+export const getMovie = (slug) => {
+  return axios.get(`/movies/${slug}`);
+};
+
+export const postMovie = (data) => {
+  return axios.post(`/movies`, data, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` },
+  });
+};
+
+export const putMovie = (id, data) => {
+  return axios.put(`/movies/${id}`, data, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` },
+  });
+};
+
+export const deleteMovie = (id) => {
+  return axios.delete(`/movies/${id}`);
+};
