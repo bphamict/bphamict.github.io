@@ -23,8 +23,6 @@ function Home() {
     // eslint-disable-next-line
   }, [location.search]);
 
-  console.log('home', 'render');
-
   return (
     <HomeWrapper className="container pt-4">
       <Helmet>
