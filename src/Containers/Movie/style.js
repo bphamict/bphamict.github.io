@@ -17,6 +17,14 @@ export const MovieWrapper = styled.div`
   .MuiRating-root {
     font-size: medium;
     margin-left: 6px;
+
+    .MuiRating-decimal {
+      line-height: 0;
+
+      label {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .progress-video {

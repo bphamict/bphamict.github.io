@@ -20,6 +20,18 @@ export const putMovie = (id, data) => {
   });
 };
 
+export const handleAPIFail = (func) => {
+  return func().catch((e) => {
+    if (e.statusCode === 400 && e.message === 'token_is_expired') {
+      // refresh token
+      // store into cookie
+      // callback api
+      return func();
+    }
+    throw e;
+  });
+};
+
 export const deleteMovie = (id) => {
   return axios.delete(`/movies/${id}`);
 };

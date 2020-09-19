@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
+  min-height: calc(100vh - 192px);
+
   .MuiFormControl-root {
     min-width: 100px;
 
@@ -27,6 +29,34 @@ export const HomeWrapper = styled.div`
     }
   }
 
+  a {
+    display: block;
+    color: #212529;
+
+    .poster {
+      width: inherit;
+      overflow: hidden;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+
+      img {
+        width: 100%;
+        min-height: 252px;
+        object-fit: cover;
+      }
+
+      @media only screen and (max-width: 1199px) {
+        img {
+          min-height: 207px;
+        }
+      }
+    }
+
+    &:hover {
+      transform: scale(1.01);
+      text-decoration: none;
+    }
+  }
+
   h2 {
     font-size: medium;
     margin-bottom: 0;
@@ -37,26 +67,8 @@ export const HomeWrapper = styled.div`
 
   .text-secondary {
     font-size: 0.8rem;
-  }
-
-  a {
-    display: block;
-    color: #212529;
-
-    .poster {
-      width: inherit;
-      height: 100%;
-      overflow: hidden;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-
-      img {
-        width: 100%;
-      }
-    }
-
-    &:hover {
-      transform: scale(1.01);
-      text-decoration: none;
-    }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;

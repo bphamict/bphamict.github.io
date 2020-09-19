@@ -1,11 +1,12 @@
 import React, { useEffect, useCallback, useState, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import Helmet from 'react-helmet';
-import _ from 'lodash';
-import Plyr from 'plyr';
-import WebTorrent from 'webtorrent';
-import { Comments, Like } from 'react-facebook';
 import { Form, Container } from 'react-bootstrap';
+import { Comments, Like } from 'react-facebook';
+import Helmet from 'react-helmet';
+import Plyr from 'plyr';
+import 'plyr/src/sass/plyr.scss';
+import WebTorrent from 'webtorrent';
+import _ from 'lodash';
 import moment from 'moment';
 import Rating from '@material-ui/lab/Rating';
 

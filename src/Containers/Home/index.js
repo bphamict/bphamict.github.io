@@ -1,70 +1,40 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Row, Col, Image } from 'react-bootstrap';
-import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import queryString from 'query-string';
-import { useSelector } from 'react-redux';
+import Helmet from 'react-helmet';
 
 import { HomeWrapper } from './style';
 import { queryMovie } from '../../Api/movie';
+import FilterBar from './FilterBar';
+import { APP_NAME } from '../../Configs';
 
 function Home() {
-  const history = useHistory();
   const location = useLocation();
   const params = queryString.parse(location.search);
   const [movies, setMovies] = useState([]);
-  const genres = useSelector((state) => state.genres);
-
-  const changeGenre = useCallback((e) => {
-    params.genre = e.target.value;
-    history.push(`/search?${queryString.stringify(params)}`);
-    // eslint-disable-next-line
-  }, []);
-
-  const changeSortBy = useCallback((e) => {
-    params.sortBy = e.target.value;
-    history.push(`/search?${queryString.stringify(params)}`);
-    // eslint-disable-next-line
-  }, []);
 
   useEffect(() => {
+    setMovies([]);
     queryMovie(queryString.stringify(params)).then((e) => {
       setMovies(e.data);
     });
     // eslint-disable-next-line
   }, [location.search]);
 
+  console.log('home', 'render');
+
   return (
-    <HomeWrapper>
-      <div className="d-flex justify-content-end">
-        <FormControl>
-          <InputLabel shrink>Thể loại</InputLabel>
-          <Select defaultValue={params.genre || 'all'} onChange={changeGenre}>
-            <MenuItem value="all">Tất cả</MenuItem>
-            {genres.map((genre) => (
-              <MenuItem key={genre.slug} value={genre.slug}>
-                {genre.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl className="ml-4">
-          <InputLabel shrink>Xếp theo</InputLabel>
-          <Select
-            defaultValue={params.sortBy || 'newest'}
-            onChange={changeSortBy}
-          >
-            <MenuItem value="newest">Mới nhất</MenuItem>
-            <MenuItem value="popularity">Phổ biến</MenuItem>
-            <MenuItem value="rating">Xếp hạng</MenuItem>
-            <MenuItem value="trending">Xu hướng</MenuItem>
-            <MenuItem value="year">Năm</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+    <HomeWrapper className="container pt-4">
+      <Helmet>
+        <title>{APP_NAME} - Xem phim mới miễn phí chất lượng cao</title>
+      </Helmet>
+      <FilterBar />
       <hr style={{ marginTop: '.3rem' }} />
+      {movies.length === 0 && <LinearProgress />}
       <Row>
-        {movies.length !== 0 &&
+        {movies.length > 0 &&
           movies.map((movie) => (
             <Col
               key={movie.slug}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { FacebookProvider } from 'react-facebook';
@@ -10,13 +10,15 @@ import store from './Redux/store';
 import { FB_APP_ID } from './Configs';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <FacebookProvider appId={FB_APP_ID}>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <FacebookProvider appId={FB_APP_ID}>
+      <Suspense fallback={() => {}}>
         <App />
-      </FacebookProvider>
-    </Provider>
-  </React.StrictMode>,
+      </Suspense>
+    </FacebookProvider>
+  </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

@@ -5,7 +5,7 @@ import { FooterWrapper } from './style';
 import { APP_NAME } from '../../Configs';
 
 function Footer({ location }) {
-  const ignorePath = ['/sign-in'];
+  const ignorePath = ['/auth/sign-in'];
 
   return (
     <>

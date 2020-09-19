@@ -47,33 +47,33 @@ function Navigation() {
         </Nav>
         {signedIn ? (
           <Nav>
-            <Nav.Link as={Link} role="button" to="/db/upload">
+            <Nav.Link as={Link} role="button" to="/dashboard/movies/upload">
               Upload
             </Nav.Link>
             <NavDropdown title="Bảo">
-              <NavDropdown.Item as={Link} to="/db/casts">
+              <NavDropdown.Item as={Link} to="/dashboard/casts">
                 Cast
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/db/directors">
+              <NavDropdown.Item as={Link} to="/dashboard/directors">
                 Director
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/db/genres">
+              <NavDropdown.Item as={Link} to="/dashboard/genres">
                 Genre
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/db/feedbacks">
+              <NavDropdown.Item as={Link} to="/dashboard/feedbacks">
                 Feedback
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/db/movies">
+              <NavDropdown.Item as={Link} to="/dashboard/movies">
                 Movie
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/sign-out">
+              <NavDropdown.Item as={Link} to="/auth/sign-out">
                 Sign out
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         ) : (
           <Nav>
-            <Nav.Link as={Link} to="/sign-in">
+            <Nav.Link as={Link} to="/auth/sign-in">
               Sign in
             </Nav.Link>
           </Nav>

@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { loadReCaptcha, ReCaptcha } from 'react-recaptcha-v3';
+import Helmet from 'react-helmet';
 
 import { postFeedback } from '../../Api/feedback';
-import { RECAPTCHA_KEY } from '../../Configs';
+import { RECAPTCHA_KEY, APP_NAME } from '../../Configs';
 
 function Feedback() {
   const emailRef = useRef(null);
@@ -33,9 +34,12 @@ function Feedback() {
   }, []);
 
   return (
-    <>
+    <Container className="pt-4" style={{ minHeight: 'calc(100vh - 192px)' }}>
+      <Helmet>
+        <title>Feedback - {APP_NAME}</title>
+      </Helmet>
       <h2>Phản hồi</h2>
-      <hr className={{ marginTop: 0 }} />
+      <hr style={{ marginTop: 0 }} />
       <Row>
         <Col md={6}>
           <Form onSubmit={(e) => submit(e)}>
@@ -62,6 +66,7 @@ function Feedback() {
                 as="textarea"
                 placeholder="Nhập nội dung"
                 ref={contentRef}
+                rows={3}
               />
             </Form.Group>
             <ReCaptcha
@@ -76,7 +81,7 @@ function Feedback() {
           </Form>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 }
 

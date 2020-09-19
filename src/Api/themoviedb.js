@@ -12,6 +12,11 @@ export const crawlMovie = (query, year) =>
         `https://api.themoviedb.org/3/movie/${findMovie.data.results[0].id}?api_key=${THEMOVIEDB_API_KEY}&language=vi-VN`
       );
 
+      const video = await axios.get(
+        `https://api.themoviedb.org/3/movie/${findMovie.data.results[0].id}/videos?api_key=${THEMOVIEDB_API_KEY}`
+      );
+      movie.data.trailer = video.data.results[0].key;
+
       if (movie.data.overview === '') {
         const temp = await axios.get(
           `https://api.themoviedb.org/3/movie/${findMovie.data.results[0].id}?api_key=${THEMOVIEDB_API_KEY}&language=en-US`

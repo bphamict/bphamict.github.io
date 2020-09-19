@@ -34,6 +34,7 @@ function Upload({ type, match }) {
   const crawl = useCallback(() => {
     crawlMovie(originalTitleRef.current.value, yearRef.current.value)
       .then((e) => {
+        trailerRef.current.value = e.data.trailer;
         posterRef.current.value = e.data.poster_path;
         titleRef.current.value = e.data.title;
         originalTitleRef.current.value = e.data.original_title;
@@ -43,6 +44,7 @@ function Upload({ type, match }) {
         releaseDateRef.current.value = e.data.release_date;
         // directorRef.current.value
         // castRef.current.value
+        genreRef.current.value = '';
         e.data.genres.forEach((genre) => {
           genreRef.current.value += `${genre.name}, `;
         });
@@ -130,12 +132,13 @@ function Upload({ type, match }) {
           ratingRef.current.value = e.data.rating;
           // directorRef.current.value = e.data.director;
           // castRef.current.value = e.data.cast;
-          // tagRef.current.value = e.data.tag;
-          viRef.current.value = e.data.captions.vi;
-          enRef.current.value = e.data.captions.en;
+          genreRef.current.value = '';
           e.data.genres.forEach((genre) => {
             genreRef.current.value += `${genre.name}, `;
           });
+          // tagRef.current.value = e.data.tag;
+          viRef.current.value = e.data.captions.vi;
+          enRef.current.value = e.data.captions.en;
         })
         .catch((e) => {
           console.log(e.response);

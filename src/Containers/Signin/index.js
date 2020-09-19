@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button, Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import Helmet from 'react-helmet';
 
 import { signin as signinApi } from '../../Api/auth';
 import { signin as signinFn } from '../../Redux/actions/auth';
+import { APP_NAME } from '../../Configs';
 
 function Signin() {
   const identifierRef = useRef(null);
@@ -27,10 +29,13 @@ function Signin() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center pt-4">
+      <Helmet>
+        <title>Sign in - {APP_NAME}</title>
+      </Helmet>
       <Col lg={4} md={6}>
         <Form onSubmit={submit}>
-          <h2 className="text-center py-3">Administrator</h2>
+          <h2 className="text-center py-3">KhaBanhTV</h2>
           <Form.Group>
             <Form.Label>Username or email</Form.Label>
             <Form.Control type="text" ref={identifierRef} required />
