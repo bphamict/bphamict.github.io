@@ -4,8 +4,6 @@ object-assign
 @license MIT
 */
 
-/* @cc_on!@ */
-
 /*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -18,28 +16,6 @@ object-assign
  * @author   Feross Aboukhadijeh <http://feross.org>
  * @license  MIT
  */
-
-/*! create-torrent. MIT License. WebTorrent LLC <https://webtorrent.io/opensource> */
-
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-
-/*! magnet-uri. MIT License. WebTorrent LLC <https://webtorrent.io/opensource> */
-
-/*! parse-torrent. MIT License. WebTorrent LLC <https://webtorrent.io/opensource> */
-
-/*! queue-microtask. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! render-media. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! simple-concat. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! stream-to-blob-url. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! stream-to-blob. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! stream-with-known-length-to-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /**
  * @license
