@@ -1,6 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 
+import Layout from '../../../Layouts';
+
 function Feedback() {
   const data = [
     {
@@ -15,7 +17,7 @@ function Feedback() {
     },
   ];
   return (
-    <>
+    <Layout>
       <h2>Feedback</h2>
       <hr style={{ marginTop: 0 }} />
       <Table hover>
@@ -39,7 +41,7 @@ function Feedback() {
             ))}
         </tbody>
       </Table>
-    </>
+    </Layout>
   );
 }
 

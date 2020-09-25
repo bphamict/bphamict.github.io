@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import { loadReCaptcha, ReCaptcha } from 'react-recaptcha-v3';
 import Helmet from 'react-helmet';
 
+import Layout from '../../Layouts';
 import { postFeedback } from '../../Api/feedback';
 import { RECAPTCHA_KEY, APP_NAME } from '../../Configs';
 
@@ -34,7 +35,7 @@ function Feedback() {
   }, []);
 
   return (
-    <Container className="pt-4" style={{ minHeight: 'calc(100vh - 192px)' }}>
+    <Layout>
       <Helmet>
         <title>Feedback - {APP_NAME}</title>
       </Helmet>
@@ -81,7 +82,7 @@ function Feedback() {
           </Form>
         </Col>
       </Row>
-    </Container>
+    </Layout>
   );
 }
 

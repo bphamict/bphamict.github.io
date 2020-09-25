@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
-  min-height: calc(100vh - 192px);
-
   .MuiFormControl-root {
     min-width: 100px;
 

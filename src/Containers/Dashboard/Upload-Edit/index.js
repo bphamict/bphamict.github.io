@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import { useSelector } from 'react-redux';
 
+import Layout from '../../../Layouts';
 import { UploadWrapper } from './style';
 import { postMovie, getMovie, putMovie } from '../../../Api/movie';
 import { crawlMovie } from '../../../Api/themoviedb';
@@ -147,151 +148,153 @@ function Upload({ type, match }) {
   }, [params]);
 
   return (
-    <Form onSubmit={submit} as={UploadWrapper}>
-      <Toast
-        show={showToast}
-        onClose={() => setShowToast(false)}
-        autohide
-        delay={3000}
-      >
-        <Toast.Header>
-          <strong className="mr-auto">Result</strong>
-        </Toast.Header>
-        <Toast.Body>{message}</Toast.Body>
-      </Toast>
-      <div className="d-flex">
-        <h2 className="flex-grow-1">{type} movie</h2>
-        <div>
-          <Button type="reset" variant="danger" size="sm">
-            Clear All
-          </Button>
-          <Button
-            variant="info"
-            size="sm"
-            className="ml-2"
-            onClick={() => crawl()}
-          >
-            Crawl
-          </Button>
-          <Button type="submit" variant="primary" size="sm" className="ml-2">
-            Done
-          </Button>
-        </div>
-      </div>
-      <hr style={{ marginTop: 0 }} />
-      <Row>
-        <Col md={6}>
-          <Form.Group>
-            <Form.Label>MagnetURI</Form.Label>
-            <Form.Control size="sm" type="text" ref={magnetURIRef} required />
-          </Form.Group>
-          <Form.Row>
-            <Form.Group as={Col}>
-              <Form.Label>Trailer</Form.Label>
-              <Form.Control size="sm" type="text" ref={trailerRef} required />
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>Poster</Form.Label>
-              <Form.Control size="sm" type="text" ref={posterRef} required />
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col}>
-              <Form.Label>Title</Form.Label>
-              <Form.Control size="sm" type="text" ref={titleRef} required />
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>Original title (*)</Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                ref={originalTitleRef}
-                required
-              />
-            </Form.Group>
-          </Form.Row>
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
+    <Layout>
+      <Form onSubmit={submit} as={UploadWrapper}>
+        <Toast
+          show={showToast}
+          onClose={() => setShowToast(false)}
+          autohide
+          delay={3000}
+        >
+          <Toast.Header>
+            <strong className="mr-auto">Result</strong>
+          </Toast.Header>
+          <Toast.Body>{message}</Toast.Body>
+        </Toast>
+        <div className="d-flex">
+          <h2 className="flex-grow-1">{type} movie</h2>
+          <div>
+            <Button type="reset" variant="danger" size="sm">
+              Clear All
+            </Button>
+            <Button
+              variant="info"
               size="sm"
-              as="textarea"
-              rows={3}
-              ref={descriptionRef}
-              required
-            />
-          </Form.Group>
-          <Form.Row>
-            <Form.Group as={Col}>
-              <Form.Label>Duration</Form.Label>
+              className="ml-2"
+              onClick={() => crawl()}
+            >
+              Crawl
+            </Button>
+            <Button type="submit" variant="primary" size="sm" className="ml-2">
+              Done
+            </Button>
+          </div>
+        </div>
+        <hr style={{ marginTop: 0 }} />
+        <Row>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>MagnetURI</Form.Label>
+              <Form.Control size="sm" type="text" ref={magnetURIRef} required />
+            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Trailer</Form.Label>
+                <Form.Control size="sm" type="text" ref={trailerRef} required />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Poster</Form.Label>
+                <Form.Control size="sm" type="text" ref={posterRef} required />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Title</Form.Label>
+                <Form.Control size="sm" type="text" ref={titleRef} required />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Original title (*)</Form.Label>
+                <Form.Control
+                  size="sm"
+                  type="text"
+                  ref={originalTitleRef}
+                  required
+                />
+              </Form.Group>
+            </Form.Row>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
               <Form.Control
                 size="sm"
-                type="number"
-                ref={durationRef}
+                as="textarea"
+                rows={3}
+                ref={descriptionRef}
                 required
               />
             </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>Rating</Form.Label>
-              <Form.Control size="sm" type="text" ref={ratingRef} required />
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Duration</Form.Label>
+                <Form.Control
+                  size="sm"
+                  type="number"
+                  ref={durationRef}
+                  required
+                />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Rating</Form.Label>
+                <Form.Control size="sm" type="text" ref={ratingRef} required />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Year</Form.Label>
+                <Form.Control size="sm" type="number" ref={yearRef} required />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Release date</Form.Label>
+                <Form.Control
+                  size="sm"
+                  type="date"
+                  ref={releaseDateRef}
+                  required
+                />
+              </Form.Group>
+            </Form.Row>
+          </Col>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Director</Form.Label>
+              <Form.Control size="sm" type="text" ref={directorRef} />
             </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>Year</Form.Label>
-              <Form.Control size="sm" type="number" ref={yearRef} required />
+            <Form.Group>
+              <Form.Label>Casts</Form.Label>
+              <Form.Control size="sm" type="text" ref={castRef} />
             </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>Release date</Form.Label>
-              <Form.Control
-                size="sm"
-                type="date"
-                ref={releaseDateRef}
-                required
-              />
+            <Form.Group>
+              <Form.Label>Genres</Form.Label>
+              <Form.Control size="sm" type="text" ref={genreRef} disabled />
             </Form.Group>
-          </Form.Row>
-        </Col>
-        <Col md={6}>
-          <Form.Group>
-            <Form.Label>Director</Form.Label>
-            <Form.Control size="sm" type="text" ref={directorRef} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Casts</Form.Label>
-            <Form.Control size="sm" type="text" ref={castRef} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Genres</Form.Label>
-            <Form.Control size="sm" type="text" ref={genreRef} disabled />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Tags</Form.Label>
-            <Form.Control size="sm" type="text" ref={tagRef} />
-          </Form.Group>
-          <Form.Label>Captions</Form.Label>
-          <Form.Row>
-            <Form.Group as={Col} md={4} xs={6}>
-              <Form.Label>VI</Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                ref={viRef}
-                defaultValue="vi.vtt"
-                required
-              />
+            <Form.Group>
+              <Form.Label>Tags</Form.Label>
+              <Form.Control size="sm" type="text" ref={tagRef} />
             </Form.Group>
-            <Form.Group as={Col} md={4} xs={6}>
-              <Form.Label>EN</Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                ref={enRef}
-                defaultValue="en.vtt"
-                required
-              />
-            </Form.Group>
-          </Form.Row>
-        </Col>
-      </Row>
-    </Form>
+            <Form.Label>Captions</Form.Label>
+            <Form.Row>
+              <Form.Group as={Col} md={4} xs={6}>
+                <Form.Label>VI</Form.Label>
+                <Form.Control
+                  size="sm"
+                  type="text"
+                  ref={viRef}
+                  defaultValue="vi.vtt"
+                  required
+                />
+              </Form.Group>
+              <Form.Group as={Col} md={4} xs={6}>
+                <Form.Label>EN</Form.Label>
+                <Form.Control
+                  size="sm"
+                  type="text"
+                  ref={enRef}
+                  defaultValue="en.vtt"
+                  required
+                />
+              </Form.Group>
+            </Form.Row>
+          </Col>
+        </Row>
+      </Form>
+    </Layout>
   );
 }
 

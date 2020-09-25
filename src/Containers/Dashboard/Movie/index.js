@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { Delete, Edit, Visibility } from '@material-ui/icons';
 
+import Layout from '../../../Layouts';
 import { queryMovie, deleteMovie } from '../../../Api/movie';
 
 function Movie() {
@@ -35,7 +36,7 @@ function Movie() {
   }, []);
 
   return (
-    <>
+    <Layout>
       <h2>Movie</h2>
       <hr style={{ marginTop: 0 }} />
       <Table hover>
@@ -69,7 +70,7 @@ function Movie() {
                   <Button
                     size="sm"
                     className="ml-2"
-                    onClick={() => history.push(`/db/movies/${e.slug}`)}
+                    onClick={() => history.push(`/dashboard/movies/${e.slug}`)}
                   >
                     <Edit />
                   </Button>
@@ -86,7 +87,7 @@ function Movie() {
             ))}
         </tbody>
       </Table>
-    </>
+    </Layout>
   );
 }
 

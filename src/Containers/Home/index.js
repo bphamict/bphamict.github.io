@@ -5,6 +5,7 @@ import { LinearProgress } from '@material-ui/core';
 import queryString from 'query-string';
 import Helmet from 'react-helmet';
 
+import Layout from '../../Layouts';
 import { HomeWrapper } from './style';
 import { queryMovie } from '../../Api/movie';
 import FilterBar from './FilterBar';
@@ -24,38 +25,40 @@ function Home() {
   }, [location.search]);
 
   return (
-    <HomeWrapper className="container pt-4">
-      <Helmet>
-        <title>{APP_NAME} - Xem phim mới miễn phí chất lượng cao</title>
-      </Helmet>
-      <FilterBar />
-      <hr style={{ marginTop: '.3rem' }} />
-      {movies.length === 0 && <LinearProgress />}
-      <Row>
-        {movies.length > 0 &&
-          movies.map((movie) => (
-            <Col
-              key={movie.slug}
-              className="mb-3"
-              lg={{ span: 2 }}
-              md={{ span: 3 }}
-              sm={{ span: 4 }}
-              xs={{ span: 6 }}
-            >
-              <Link to={`/movies/${movie.slug}`}>
-                <div className="poster rounded">
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w300${movie.poster}`}
-                    alt={movie.title}
-                  />
-                </div>
-                <h2 className="mt-2">{movie.title}</h2>
-                <div className="text-secondary">{movie.originalTitle}</div>
-              </Link>
-            </Col>
-          ))}
-      </Row>
-    </HomeWrapper>
+    <Layout>
+      <HomeWrapper>
+        <Helmet>
+          <title>{APP_NAME} - Xem phim mới miễn phí chất lượng cao</title>
+        </Helmet>
+        <FilterBar />
+        <hr style={{ marginTop: '.3rem' }} />
+        {movies.length === 0 && <LinearProgress />}
+        <Row>
+          {movies.length > 0 &&
+            movies.map((movie) => (
+              <Col
+                key={movie.slug}
+                className="mb-3"
+                lg={{ span: 2 }}
+                md={{ span: 3 }}
+                sm={{ span: 4 }}
+                xs={{ span: 6 }}
+              >
+                <Link to={`/movies/${movie.slug}`}>
+                  <div className="poster rounded">
+                    <Image
+                      src={`https://image.tmdb.org/t/p/w300${movie.poster}`}
+                      alt={movie.title}
+                    />
+                  </div>
+                  <h2 className="mt-2">{movie.title}</h2>
+                  <div className="text-secondary">{movie.originalTitle}</div>
+                </Link>
+              </Col>
+            ))}
+        </Row>
+      </HomeWrapper>
+    </Layout>
   );
 }
 

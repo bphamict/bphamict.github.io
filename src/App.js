@@ -1,7 +1,7 @@
 import React, { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Redirect,
   Route,
   Switch,
@@ -52,6 +52,12 @@ function App() {
             <Route path="/dashboard/feedbacks" component={DBFeedback} exact />
             <Route path="/dashboard/genres" component={DBGenre} exact />
             <Route path="/dashboard/movies" component={DBMovie} exact />
+            <Route path="/dashboard/tags" component={DBTag} exact />
+            <Redirect to="/" />
+          </Switch>
+        </Route>
+        <Route path="/dashboard/:path/:path" exact>
+          <Switch>
             <Route
               path="/dashboard/movies/upload"
               render={(props) => <DBUploadEdit {...props} type="Upload" />}
@@ -62,8 +68,7 @@ function App() {
               render={(props) => <DBUploadEdit {...props} type="Edit" />}
               exact
             />
-            <Route path="/dashboard/tags" component={DBTag} exact />
-            <Redirect to="/" />
+            <Redirect to="/dashboard/movies" />
           </Switch>
         </Route>
         <Redirect to="/" />
